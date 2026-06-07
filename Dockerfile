@@ -10,8 +10,9 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.
 # Create app directory
 WORKDIR /app
 
-# Source files are mounted as volume (not copied)
-# This allows easy editing without rebuilding
+# Copy source files
+COPY VERSION /app/VERSION
+COPY notify/ /app/notify/
 
 ENTRYPOINT ["python", "-m", "notify"]
 CMD []
